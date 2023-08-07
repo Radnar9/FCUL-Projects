@@ -1,0 +1,25 @@
+server:
+  port: 8085
+  ssl:
+    key-store: classpath:ServerKeyStore.jks
+    key-store-password: server123
+    keyStoreType: JKS
+    keyAlias: server
+
+spring:
+  datasource:
+    url: jdbc:h2:file:./data/serverPSD
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+
+app:
+  serverAddress: "https://localhost:8080"
+
+trust-store: classpath:ServerTrustStore.jks
+trust-store-password: server123

@@ -1,0 +1,549 @@
+{
+	"info": {
+		"_postman_id": "04e9ea75-f6f9-436d-a3f8-5ea08b31816a",
+		"name": "PSD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:8080/api/auth/login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"manuel\",\r\n    \"password\": \"manuel123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8080/api/auth/login",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8080/api/auth/register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"manuel\",\r\n    \"password\": \"manuel123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8080/api/auth/register",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bruno: Add Diogo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"diogo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8081/addFriend",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"addFriend"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Diogo: Add Bruno",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"bruno\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8083/addFriend",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"addFriend"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bruno: Send message to Diogo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "Ola Colega",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8081/send/message/diogo",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"send",
+						"message",
+						"diogo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Diogo: Send message to Bruno",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "Olá Brunão, sempre soube que eras de um bom clube!",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8083/send/message/bruno",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"send",
+						"message",
+						"bruno"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bruno: Messages with Diogo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8081/messages/diogo",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"messages",
+						"diogo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Diogo: Messages with Bruno",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8083/messages/bruno",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"messages",
+						"bruno"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bruno: Create group with Diogo and Miguel",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"participants\": [\"miguel\",\"diogo\"],\r\n    \"name\": \"PSD\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8081/create/topic",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"create",
+						"topic"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bruno: Subscribe topic PSD",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8081/subscribe/PSD",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"subscribe",
+						"PSD"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Miguel: Subscribe topic PSD",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:8082/subscribe/PSD",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"subscribe",
+						"PSD"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Diogo: Subscribe topic PSD",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8083/subscribe/PSD",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"subscribe",
+						"PSD"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bruno: Send message to PSD group",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "Olá daqui fala o Bruno"
+				},
+				"url": {
+					"raw": "https://localhost:8081/send/message/group/PSD",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"send",
+						"message",
+						"group",
+						"PSD"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Diogo: Send message to PSD group",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "Olá daqui fala o Diogo"
+				},
+				"url": {
+					"raw": "https://localhost:8083/send/message/group/PSD",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"send",
+						"message",
+						"group",
+						"PSD"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Miguel: Send message to PSD group",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "Olá daqui fala o Miguel"
+				},
+				"url": {
+					"raw": "https://localhost:8082/send/message/group/PSD",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"send",
+						"message",
+						"group",
+						"PSD"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bruno: PSD group messages",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "Andou na prancha"
+				},
+				"url": {
+					"raw": "https://localhost:8081/messages/group/PSD",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"messages",
+						"group",
+						"PSD"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Diogo: PSD group messages",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "Andou na prancha"
+				},
+				"url": {
+					"raw": "https://localhost:8083/messages/group/PSD",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"messages",
+						"group",
+						"PSD"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Miguel: PSD group messages",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "Andou na prancha"
+				},
+				"url": {
+					"raw": "https://localhost:8082/messages/group/PSD",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"messages",
+						"group",
+						"PSD"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bruno: Seach keyword with Diogo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:8081/search/diogo/sempre",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"search",
+						"diogo",
+						"sempre"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Miguel: Search group keyword",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:8082/search/group/PSD/Olá",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"search",
+						"group",
+						"PSD",
+						"Olá"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
