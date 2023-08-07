@@ -73,12 +73,12 @@ In the "Intrusion Detection and Tolerance" course, we undertook the development 
    - The DTI project encompasses a deterministic wallet-like service managing coins based on the UTXO (Unspent Transaction Output) model, as introduced in Bitcoin. Additionally, it supports the transacting of NFTs using the coins.
    - This endeavor provided an opportunity to directly engage with a cutting-edge BFT (Byzantine Fault Tolerance) system library and apply its features to the desired infrastructure context.
 
-2. The [**Decentralized Finance (DeFi)**](DTI-Projects/DeFi) project was aimed at creating an **application that facilitates the swapping of tokens between ETH and a customized DEX** (fungible) token on the `Ethereum blockchain`. This application empowered users to engage in buying and selling DEX. Furthermore, users could utilize their DEX holdings and NFTs as collateral to secure ETH loans. Precisely, users could borrow up to fifty percent of the value of their DEX holdings or NFT tokens in ETH. Upon loan repayment, users retained ownership of the DEX or NFT tokens initially presented as collateral.
+2. The [**Decentralized Finance (DeFi)**](DTI-Projects/Decentralized-Finance) project was aimed at creating an **application that facilitates the swapping of tokens between ETH and a customized DEX** (fungible) token on the `Ethereum blockchain`. This application empowered users to engage in buying and selling DEX. Furthermore, users could utilize their DEX holdings and NFTs as collateral to secure ETH loans. Precisely, users could borrow up to fifty percent of the value of their DEX holdings or NFT tokens in ETH. Upon loan repayment, users retained ownership of the DEX or NFT tokens initially presented as collateral.
    - The development of the application incorporated several technologies:
      - `Smart contracts` authored in the `Solidity` language, adhering to the **ERC721** (for NFTs) and **ERC20** (for fungible tokens) standards.
      - Client-side implementation using HTML, CSS, and JavaScript, facilitated by `Web3.js`.
      - Integration with MetaMask.
 
-For more comprehensive information about the DeFi project, please refer to the [project's directory](DTI-Projects/DeFi).
+For more comprehensive information about the DeFi project, please refer to the [project's directory](DTI-Projects/Decentralized-Finance).
 
 <!-- ## [Final Project / Master's Thesis](Final-Project/) -->
