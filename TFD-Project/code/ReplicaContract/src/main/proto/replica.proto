@@ -1,0 +1,35 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+option java_multiple_files = true;
+option java_package = "replica";
+
+package replica;
+
+// The gRPC server service definition.
+service Server {
+  // Invoke operation
+  rpc invoke(Request) returns (Result);
+  rpc request(Request) returns (Result);
+}
+
+message Request {
+  int32 id = 1;
+  string label = 2;
+  bytes data = 3;
+  google.protobuf.Timestamp timestamp = 4;
+}
+
+message Result {
+  oneof result {
+    string resultMessage = 1;
+    bytes results = 2;
+    //ResultList results = 2;
+  }
+  int32 id = 3;
+  google.protobuf.Timestamp timestamp = 4;
+  string label = 5;
+}
+/*
+message ResultList {
+  repeated string list = 1;
+}*/
