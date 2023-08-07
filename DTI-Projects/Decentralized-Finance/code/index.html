@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cryptocurrency Website</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #07232d;
+        color: #fff;
+        font-family: "Roboto", sans-serif;
+      }
+
+      h1,
+      h2 {
+        color: #11c99e;
+      }
+
+      .infoloaded {
+        display: flex;
+        width: 65vw;
+      }
+      .container {
+        display: flex;
+        max-width: 100vw;
+        margin: 0 auto;
+        padding: 20px;
+        justify-content: space-around;
+      }
+
+      .frontpage {
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        color: #fff;
+      }
+
+      .container_form {
+        max-width: 90vw;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .col {
+        flex: 1;
+        padding: 0 10px;
+      }
+
+      .title {
+        font-size: 50px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+        text-align: left;
+      }
+
+      .description {
+        font-size: 18px;
+        margin-bottom: 30px;
+        text-align: left;
+      }
+
+      .image-container {
+        width: 500px;
+        margin-bottom: 30px;
+      }
+
+      .image {
+        width: 100%;
+      }
+
+      .row-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .info {
+        margin: 10px;
+      }
+
+      .button_refresh {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .button_refresh_bt {
+        width: 6rem;
+        text-align: center;
+      }
+
+      .login {
+        font-size: 1rem;
+      }
+
+      .section {
+        display: none;
+      }
+
+      .section.active {
+        display: block;
+      }
+
+      .actions {
+        display: flex;
+        flex-direction: column;
+        width: 85vw;
+      }
+
+      .section-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 2rem;
+      }
+
+      .button-row {
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: 20px;
+      }
+
+      .forms {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+      }
+
+      label {
+        margin-bottom: 5px;
+      }
+
+      input[type="number"],
+      input[type="datetime-local"] {
+        padding: 10px;
+        border-radius: 4px;
+        border: none;
+        margin-bottom: 10px;
+      }
+
+      .img_nft {
+        width: 7rem;
+        height: 7rem;
+      }
+      .action {
+        padding: 10px 20px;
+        border-radius: 4px;
+        border: none;
+        width: 20vw;
+        background-color: #08b18a;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      button {
+        padding: 10px 20px;
+        border-radius: 4px;
+        border: none;
+        background-color: #08b18a;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      .container_contract {
+        width: 90vw;
+        display: flex;
+        flex-direction: column;
+      }
+      .control_button {
+        height: 2rem;
+      }
+
+      .control_input {
+        height: 1.75rem;
+      }
+
+      .control {
+        width: 30vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+      }
+
+      .entry {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+
+      .action.active {
+        background-color: #03654e;
+      }
+
+      .table_text_align {
+        text-align: center;
+      }
+
+      .error-message {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background-color: #f44336a8;
+        color: #fff;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+      }
+
+      .successful-message {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background-color: #0d700aa8;
+        color: #fff;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+
+  <body onload="loadInfos()">
+    <!-- Front Page -->
+    <header>
+      <div class="frontpage">
+        <div>
+          <div class="title">CryptoSwapX</div>
+          <div class="description">
+            Unleash the power of crypto assets, trade with agility, and unlock
+            new opportunities.
+          </div>
+          <button class="login" onclick="connectMetaMask()">
+            Login into your account to get started!
+          </button>
+        </div>
+        <div class="image-container">
+          <img class="image" src="front.png" alt="Cryptocurrency Image" />
+        </div>
+      </div>
+      <script src='https://cdn.jsdelivr.net/npm/bignumber.js@9.1.0/bignumber.min.js'></script>
+      <script src="https://cdn.jsdelivr.net/npm/web3@1.9.0/dist/web3.min.js"></script>
+    </header>
+
+    <main>
+      <!-- Information Section -->
+      <section>
+        <div class="container">
+          <div class="infoloaded">
+            <div class="info">
+              <p>Connected Account: ?</p>
+            </div>
+            <div class="info">
+              <p>Balance: ?</p>
+            </div>
+
+            <div class="info">
+              <p>Contract balance: ?</p>
+            </div>
+            <div class="info">
+              <p>Exchange rate: ?</p>
+            </div>
+          </div>
+          <div class="button_refresh">
+            <button class="button_refresh_bt">Refresh</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Forms Section -->
+      <section>
+        <div class="container_form">
+          <div class="row">
+            <div class="col">
+              <h2>Buy DEX</h2>
+              <div class="forms">
+                <label for="buy-amount">Amount: (ETH)</label>
+                <input
+                  type="number"
+                  id="buy-amount"
+                  name="buy-amount"
+                  placeholder="Amount in ETH"
+                  required
+                />
+                <button
+                  onclick="buyDex(document.getElementById('buy-amount').value)"
+                >
+                  Buy
+                </button>
+              </div>
+            </div>
+
+            <div class="col">
+              <h2>Sell DEX</h2>
+              <div class="forms">
+                <label for="sell-amount">Amount: (DEX)</label>
+                <input
+                  type="number"
+                  id="sell-amount"
+                  name="sell-amount"
+                  placeholder="Amount in DEX"
+                  required
+                />
+                <button
+                  onclick="sellDex(document.getElementById('sell-amount').value)"
+                >
+                  Sell
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <h2>Create Loan</h2>
+              <div class="forms">
+                <label for="loan-amount">Amount: (DEX)</label>
+                <input
+                  type="number"
+                  id="loan-amount"
+                  name="loan-amount"
+                  placeholder="Amount in DEX"
+                  required
+                />
+
+                <label for="loan-date">Date and Time:</label>
+                <input
+                  type="datetime-local"
+                  id="loan-date"
+                  name="loan-date"
+                  required
+                />
+
+                <button
+                  onclick="loan(document.getElementById('loan-amount').value, document.getElementById('loan-date').value)"
+                >
+                  Create
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="container">
+        <div class="actions">
+          <div class="button-row">
+            <button class="action" data-section="available-nfts">
+              Available NFTs to Loan
+            </button>
+            <button class="action" data-section="available-lend">
+              Available NFTs to Lend
+            </button>
+            <button class="action" data-section="borrowed-nfts">
+              Loans to Pay
+            </button>
+            <button class="action" data-section="loan-requests">
+              Loan Requests
+            </button>
+          </div>
+
+          <div class="section" id="available-nfts">
+            <h2 class="section-title">Available NFTs to Loan</h2>
+            <div class="section-content"></div>
+          </div>
+
+          <div class="section" id="available-lend">
+            <h2 class="section-title">Available NFTs to Lend</h2>
+            <div class="section-content"></div>
+          </div>
+
+          <div class="section" id="borrowed-nfts">
+            <h2 class="section-title">Loans to Pay</h2>
+            <div class="section-content"></div>
+          </div>
+
+          <div class="section" id="loan-requests">
+            <h2 class="section-title">Loan Requests</h2>
+            <div class="section-content"></div>
+          </div>
+        </div>
+      </div>
+
+      <section class="admin"></section>
+
+      <script src="main.js" type="module"></script>
+
+      <script>
+        async function getSectionContent(sectionId) {
+          // Placeholder function to generate HTML content
+          // Replace with your custom logic to generate the desired content
+          if (sectionId === "available-nfts") {
+            const nfts = await getAllTokenURIs();
+            let ret = "";
+            nfts.forEach((nft) => {
+              const idAmount = `${nft.id}-amount`;
+              const idInput = `${nft.id}-input`;
+              ret += `<div class="entry">
+              <img
+                class="img_nft"
+                src=${nft.url}
+                alt="NFT Image"
+              />
+              <p>ID: ${nft.id}</p>
+              <input
+                  id=${nft.id}-amount
+                  type="number"
+                  name="amount"
+                  placeholder="Amount in ETH"
+                  required
+              />
+              <input
+                  id=${nft.id}-input
+                  type="datetime-local"
+                  name="loan-date"
+                  required
+                />
+
+              <button onclick="makeLoanRequestByNft(${nft.id}, document.getElementById('${idAmount}').value, document.getElementById('${idInput}').value)">Request</button>
+            </div>`;
+            });
+            return ret;
+          } else if (sectionId === "available-lend") {
+            const requests = await getAvailableNfts();
+            let ret = "";
+            requests.forEach((loan) => {
+              var date = (ret += `<div class="entry">
+              <img
+                class="img_nft"
+                src=${loan.uri}
+                alt="NFT Image"
+              />
+              <div>
+              <p>ID: ${loan.nftId}</p>
+              <p>Amount: ${loan.amountEth} ETH</p>
+              <p>Deadline: ${
+                new Date(loan.deadline * 1000).toLocaleDateString("en-GB") +
+                " " +
+                new Date(loan.deadline * 1000).toLocaleTimeString("en-GB")
+              }</p>
+              <p>Borrower: ${loan.borrower}</p>
+              <button onclick="loanByNft(${loan.nftId})">Lend</button>
+            </div>`);
+            });
+            return ret;
+          } else if (sectionId === "borrowed-nfts") {
+            const loans = await getTotalBorrowedAndNotPaidBackEth();
+            let ret = "";
+            loans.forEach((loan) => {
+              ret += `<div>
+                <p>Loan ID: ${loan.id}</p>
+                <p>Amount: ${loan.amountEth} ETH</p>
+                <p>
+                  Deadline: 
+                  ${
+                    new Date(loan.deadline * 1000).toLocaleDateString("en-GB") +
+                    " " +
+                    new Date(loan.deadline * 1000).toLocaleTimeString("en-GB")
+                  }
+                </p>
+                `;
+              if (loan.isBasedNft) {
+                ret += `
+                <p>NFT ID: ${loan.nftId}</p>
+                <p>Lender: ${loan.lender}</p>`;
+              }
+              if (loan.isCallerOwner) {
+                ret += `
+                <input
+                  id=${loan.id}-amount
+                  type="number"
+                  name="amount"
+                  placeholder="Amount in ETH"
+                  required
+                />
+                <button onclick="returnLoan(${
+                  loan.id
+                },  document.getElementById('${loan.id}-amount').value)">Return</button>
+              </div>`;
+              } else {
+                ret += `<p>Borrower: ${loan.borrower}</p>`;
+              }
+            });
+            return ret;
+          } else if (sectionId === "loan-requests") {
+            const requests = await getLoanRequests();
+            let ret = "";
+            requests.forEach((loan) => {
+              ret += `<div class="entry">
+              <img
+                class="img_nft"
+                src=${loan.uri}
+                alt="NFT Image"
+              />
+              <p>ID: ${loan.nftId}</p>
+              <p>Amount: ${loan.amountEth} ETH</p>
+              <p>Deadline: ${
+                new Date(loan.deadline * 1000).toLocaleDateString("en-GB") +
+                " " +
+                new Date(loan.deadline * 1000).toLocaleTimeString("en-GB")
+              }</p>
+              <button onclick="cancelLoanRequestByNft(${
+                loan.nftId
+              })">Cancel</button>
+            </div>`;
+            });
+            return ret;
+          }
+
+          return ""; // Default return an empty string if no content is generated
+        }
+
+        const buttons = document.querySelectorAll(".action");
+        const sections = document.querySelectorAll(".section");
+
+        buttons.forEach(async (button) => {
+          button.addEventListener("click", async () => {
+            const targetSection = button.getAttribute("data-section");
+            sections.forEach((section) => {
+              section.classList.remove("active");
+            });
+            document.getElementById(targetSection).classList.add("active");
+            buttons.forEach((btn) => {
+              btn.classList.remove("active");
+            });
+            button.classList.add("active");
+
+            // Get the section content and update the HTML
+            var sectionContent = await getSectionContent(targetSection);
+
+            if (sectionContent == "") {
+              sectionContent = "No content to show";
+            }
+
+            document.querySelector(
+              `#${targetSection} .section-content`
+            ).innerHTML = sectionContent;
+          });
+        });
+
+        /////////
+
+        async function loadClient() {
+          const account = await getConnectedAccount();
+          const balance = await getDex();
+          const eth = await getEthTotalBalance();
+          const exchange = await getRateEthToDex();
+
+          const sectionContent = `
+          <div class="info">
+              <p>Connected Account:<br> ${account}</p>
+            </div>
+            <div class="info">
+              <p>Balance:<br> ${balance} DEX</p>
+            </div>
+
+            <div class="info">
+              <p>Contract balance:<br> ${eth} ETH</p>
+            </div>
+            <div class="info">
+              <p>Exchange rate:<br> 10<sup>${exchange}</sup></p>
+            </div>
+            `;
+
+          document.querySelector(`.infoloaded`).innerHTML = sectionContent;
+        }
+        async function loadInfos() {
+          await loadClient();
+          if (await isOwner()) {
+            await checkLoanStatus();
+            await listenToLoanCreation();
+            document.querySelector(`.admin`).innerHTML = `
+            <div class="container">
+              <div class="container_contract">
+                <h2>Contract Owner Panel</h2>
+                <br />
+                <div class="control">
+                  <div>Set rate ETH to DEX:</div>
+                  <input
+                    id="rate-input"
+                    class="control_input"
+                    type="number"
+                    placeholder="E.g.: 2 for 1ETH=100DEX"
+                  />
+                  <button
+                    onclick="setRateEthToDex(document.getElementById('rate-input').value)"
+                    class="control_button"
+                  >
+                    SET
+                  </button>
+                </div>
+
+                <div class="control">
+                  <div>Check loan:</div>
+                  <input
+                    id="loan-input"
+                    class="control_input"
+                    type="number"
+                    placeholder="Enter a loanId"
+                  />
+                  <button
+                    onclick="checkLoan(document.getElementById('loan-input').value)"
+                    class="control_button"
+                  >
+                    CHECK
+                  </button>
+                </div>
+
+                <div class="control">
+                  <div>Checking all loans status every 10 minutes</div>
+                </div>
+
+                <div class="control">
+                  <h3>Loan Creation Events</h3>
+                </div>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Borrower</th>
+                      <th>ETH Amount</th>
+                      <th>Deadline</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tabela" class="table_text_align">
+                  </tbody>
+                </table>
+              </div>
+            </div>`;
+          }
+        }
+
+        const refresh = document.querySelectorAll(".button_refresh_bt")[0];
+
+        refresh.addEventListener("click", async () => {
+          await loadClient();
+        });
+      </script>
+    </main>
+  </body>
+</html>
